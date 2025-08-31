@@ -28,7 +28,6 @@ jobs:
         uses: dflook/terraform-plan@v1.29.1
         with:
           path: .
-          out: tfplan
 
       - name: Terraform Apply
         uses: dflook/terraform-apply@v1.29.1
