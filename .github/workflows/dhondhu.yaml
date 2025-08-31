@@ -25,13 +25,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        uses: dflook/terraform-plan@v1.29.1
-        with:
-          path: .
+        run: terraform plan -out=tfplan
 
       - name: Terraform Apply
-        uses: dflook/terraform-apply@v1.29.1
-        with:
-          path: .
-          plan: tfplan
-          auto_approve: true
+        run: terraform apply -auto-approve tfplan
