@@ -5,7 +5,7 @@ trigger:
     - main
 
 
- pool: sumant2308
+pool: sumant2308
 
 steps:
 - task: TerraformInstaller@1
