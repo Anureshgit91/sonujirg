@@ -1,4 +1,4 @@
-name: delllaptop
+ name: delllaptop
 
 on:
   workflow_dispatch:
@@ -6,6 +6,7 @@ on:
 jobs:
   terraform-job:
     runs-on: [self-hosted, Windows, x64]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v5.0.0
@@ -18,9 +19,20 @@ jobs:
       - name: Azure Login
         uses: Azure/login@v2.3.0
         with:
-           creds: ${{secrets.AZURE_CREDENTIALS}}
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Terraform init and plan
-        run: |
-          terraform init
-          terraform plan
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        uses: dflook/terraform-plan@v1.29.1
+        with:
+          path: .
+          out: tfplan
+
+      - name: Terraform Apply
+        uses: dflook/terraform-apply@v1.29.1
+        with:
+          path: .
+          plan: tfplan
+          auto_approve: true
