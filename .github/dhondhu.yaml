@@ -1,1 +1,12 @@
+name : delllaptop
+
+on:
+  push:
+    branches:
+      - main
+      - 'releases/**'
+
+jobs:
+  terraform-job:
+    runs-on: [self-hosted, Windows, x64]
 
