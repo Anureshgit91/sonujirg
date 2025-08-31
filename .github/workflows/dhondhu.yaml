@@ -8,3 +8,6 @@ on:
 jobs:
   terraform-job:
     runs-on: [self-hosted, Windows, x64]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
