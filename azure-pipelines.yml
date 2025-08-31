@@ -50,6 +50,12 @@ steps:
       command: 'plan'
       environmentServiceNameAzureRM: 'sumantserviceconnection2308'
 
+- ${{ if eq(parameters.plan1, 'apply') }}:
+  - task: ManualValidation@1
+    inputs:
+      notifyUsers: 'anuresh@sumantjadhav1998gmail.onmicrosoft.com'
+      approvers: 'anuresh'
+
 # ✅ Apply step only if apply is selected
 - ${{ if eq(parameters.plan1, 'apply') }}:
   - task: TerraformTask@5
