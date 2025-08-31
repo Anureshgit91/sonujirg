@@ -18,8 +18,9 @@ jobs:
       - name: Azure Login
         uses: Azure/login@v2.3.0
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-          subscription-id: 2e333137-3307-4678-a744-a2d37508c632  # ✅ Correct placement
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       - name: Terraform init and plan
         run: |
