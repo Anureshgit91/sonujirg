@@ -1,10 +1,7 @@
 name : delllaptop
 
 on:
-  push:
-    branches:
-      - main
-      - 'releases/**'
+  push: workflow_dispatch
 
 jobs:
   terraform-job:
