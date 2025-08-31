@@ -1,0 +1,35 @@
+trigger: 
+  branches:
+    include:
+    - features/*
+    - main
+
+
+ pool: sumant2308
+
+steps:
+- task: TerraformInstaller@1
+  inputs:
+    terraformVersion: 'latest'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'sumantserviceconnection2308'
+    backendAzureRmResourceGroupName: '28sonujirg'
+    backendAzureRmStorageAccountName: 'sonujistorage89'
+    backendAzureRmContainerName: 'container34'
+    backendAzureRmKey: 'sonuji31.tfstate'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'sumantserviceconnection2308'
+
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    environmentServiceNameAzureRM: 'sumantserviceconnection2308'
