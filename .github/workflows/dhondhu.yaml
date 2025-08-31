@@ -1,4 +1,4 @@
- name: delllaptop
+name: delllaptop
 
 on:
   workflow_dispatch:
