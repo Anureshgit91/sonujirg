@@ -23,4 +23,3 @@ jobs:
         run: |
           terraform init
           terraform plan
-            
